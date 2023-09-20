@@ -13,25 +13,24 @@ pragma solidity ^0.8.18;
 contract My_Token {
     string public name = "PIYUSH";
     string public symbol = "PB";
-    uint8 public decimals = 8;
-    uint256 public totalSupply = 0; // Total supply with 18 decimal places
+    uint public decimals = 8;
+    uint public totalSupply = 0; // Total supply with 18 decimal places
 
-    mapping(address => uint256) public balanceOf;
+    mapping(address address=> uint) public balance;
 
-event Mint(address indexed to, uint256 value);
-event Burn(address indexed from, address indexed to, uint256 value); // Added 'to' address attribute
 
-function mint(address to, uint256 value) public {
+
+
+function mint(address address , uint value) public {
     totalSupply += value;
-    balanceOf[to] += value;
+    balance[address] += value;
 }
 
-function burn(address from, uint256 value) public  {
-    require(balanceOf[from] >= value, "Insufficient balance for burning");
+function burn(address adress, uint value) public  {
+    if(balance[address] >= value, "Insufficient balance for burning");
     
-    balanceOf[from] -= value;
+    balance[address] -= value;
     totalSupply -= value;
-    emit Burn(from, address(0), value); // Burning tokens by sending them to address(0)
     }
 }
 To compile the code, click on the "Solidity Compiler" tab in the left-hand sidebar. Make sure the "Compiler" option is set to "0.8.18" (or another compatible version), and then click on the "Compile My_Token.sol" button.
